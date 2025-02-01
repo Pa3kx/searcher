@@ -1,0 +1,52 @@
+[
+    {
+        "title": "AMD vs Inel : r/LocalLLaMA",
+        "link": "https://www.reddit.com/r/LocalLLaMA/comments/17ui08f/amd_vs_inel/",
+        "description": "Nov 14, 2023 ... Most professionals choose Intel because it is a tad more stable. AMD is better value for the money if you don't care about computer freezing ..."
+    },
+    {
+        "title": "Someone needs to write a buyer's guide for GPUs and LLMs. For ...",
+        "link": "https://news.ycombinator.com/item?id=35599247",
+        "description": "Do you go with Nvidia for the CUDA cores or with AMD for more VRAM? Do you do neither and wait another generation?"
+    },
+    {
+        "title": "Nvidia vs. AMD : r/LocalLLaMA",
+        "link": "https://www.reddit.com/r/LocalLLaMA/comments/1d7casq/nvidia_vs_amd/",
+        "description": "Jun 3, 2024 ... 19 votes, 39 comments. Hi, I am new to the local LLaMa section and have a question about me future rig. From what I understand, ..."
+    },
+    {
+        "title": "Anybody running an Intel arc 750 or 770? · ggerganov llama.cpp ...",
+        "link": "https://github.com/ggerganov/llama.cpp/discussions/1923",
+        "description": "How many iterations/ms are you getting through opencl offloading? Does it work with UI's like oobabooga and is it worth getting one?"
+    },
+    {
+        "title": "Quick question about AMD and Intel CPUs with LLMs : r/LocalLLaMA",
+        "link": "https://www.reddit.com/r/LocalLLaMA/comments/1egiuz0/quick_question_about_amd_and_intel_cpus_with_llms/",
+        "description": "Jul 31, 2024 ... My simple question: Do AMD CPUs perform as well as Intel CPUs when running LLMs? I know there's a preference for Nvidia GPUs over AMD GPUs for LLMs due to ..."
+    },
+    {
+        "title": "Running Local LLMs, CPU vs. GPU - a Quick Speed Test - DEV ...",
+        "link": "https://dev.to/maximsaplin/running-local-llms-cpu-vs-gpu-a-quick-speed-test-2cjn",
+        "description": "Mar 11, 2024 ... Running Local LLMs, CPU vs. GPU - a Quick Speed Test ; AMD Ryzen 7 7800x3d CPU, 9.7 tok/s ; Intel i7 14700k CPU, 9.8 tok/s ; ROG Ally Ryzen Z1 ..."
+    },
+    {
+        "title": "Cpu inference, 7950x vs 13900k, which one is better? : r/LocalLLaMA",
+        "link": "https://www.reddit.com/r/LocalLLaMA/comments/145t90n/cpu_inference_7950x_vs_13900k_which_one_is_better/",
+        "description": "Jun 10, 2023 ... For 128 or 192 GB. (4 sticks) the RAM speeds would anyway be 5200 or 5600 at best. In this case, is Intel still better than AMD? Upvote 1"
+    },
+    {
+        "title": "Recommended hardware for running LLMs locally - Beginners ...",
+        "link": "https://discuss.huggingface.co/t/recommended-hardware-for-running-llms-locally/66029",
+        "description": "Dec 16, 2023 ... But for some reason on huggingface transformers, the models take forever. I've even downloaded ollama.ai and it works very quickly for 7b models ..."
+    },
+    {
+        "title": "What's the deal with Macbook obsession and LLLM's? : r/LocalLLaMA",
+        "link": "https://www.reddit.com/r/LocalLLaMA/comments/1ad8fsl/whats_the_deal_with_macbook_obsession_and_lllms/",
+        "description": "Jan 28, 2024 ... It also matches better my needs since I am serving my local LLM to multiple personal devices. ... The system memory bandwidth of current Intel and ..."
+    },
+    {
+        "title": "Benefit of using a Pro (non-gaming-optimized) video card - General ...",
+        "link": "https://community.topazlabs.com/t/benefit-of-using-a-pro-non-gaming-optimized-video-card/4030",
+        "description": "Jan 12, 2018 ... Right now I have to wait sometimes a second or two between checking presets. :slight_smile: ). I have a notebook i7 with 16GB RAM and a 1050 ..."
+    }
+]
