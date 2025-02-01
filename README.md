@@ -6,7 +6,7 @@ A simple FastAPI-based search service that fetches results using Google's Custom
 
 ### 1️⃣ Clone the Repository
 
-    git clone https://github.com/yourusername/searcher.git
+    git clone https://github.com/Pa3kx/searcher.git
     cd searcher
 
 ### 2️⃣ Set Up Environment Variables
