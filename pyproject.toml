@@ -15,3 +15,10 @@ dependencies = [
 [build-system]
 requires = ["hatchling"]
 build-backend = "hatchling.build"
+
+[tool.uv]
+dev-dependencies = [
+    "pytest>=8.3.4",
+    "respx>=0.22.0",
+    "pytest-asyncio>=0.25.3",
+]

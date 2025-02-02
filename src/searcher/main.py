@@ -1,29 +1,23 @@
 import logging
 import json
-import ast
 import uuid
 import asyncio
-from searcher.search import google_search
 
 from fastapi import FastAPI, Query, Response, HTTPException, Request, Depends
 from fastapi.responses import FileResponse, HTMLResponse
 from fastapi.staticfiles import StaticFiles
 from fastapi.templating import Jinja2Templates
-
 import redis.asyncio as redis
+
+from searcher.search import google_search
 
 logging.basicConfig(level=logging.INFO)
 logger = logging.getLogger(__name__)
-
 
 redis_client = redis.Redis(host="redis", port=6379, db=0, decode_responses=True)
 
 SESSION_COOKIE_NAME = "session_id"
 SESSION_TTL = 3600  # invalidate session after one hour
-
-# Load example data from file (for demonstration purposes)
-with open("example_output.txt", "r", encoding="utf-8") as f:
-    EXAMPLE_DATA = ast.literal_eval(f.read())  # Convert string to Python list
 
 # Initialize FastAPI app and mount static files and templates
 app = FastAPI(
@@ -95,10 +89,8 @@ async def search(
         HTMLResponse: The rendered search results page with the search items.
     """
     logger.info(query)
-    # new_results = google_search(query)
-    new_results = EXAMPLE_DATA  # For now, we always return the example data. to not hit 100 requests limit
+    new_results = await google_search(query)
 
-    await asyncio.sleep(3)  # To test the loading indicator
     await redis_client.setex(session_id, SESSION_TTL, json.dumps(new_results))
 
     return templates.TemplateResponse(
@@ -140,7 +132,7 @@ async def download_json(
         {f"result{i + 1}": item for i, item in enumerate(search_items)}, indent=4
     )
     response.headers["Content-Disposition"] = "attachment; filename=search_results.json"
-    response.media_type = "application/json"
+    response.headers["Content-Type"] = "application/json"
     response.body = json_items.encode("utf-8")
     response.status_code = 200
     return response

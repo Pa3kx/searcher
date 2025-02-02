@@ -20,7 +20,10 @@ Create a `.env` file in the project root and add your Google API credentials:
 
 Use `docker-compose` to build and start the containerized application:
 
-    docker-compose up --build
+    docker-compose up
+
+###  🧪 Run application tests
+    docker-compose -f docker-compose.test.yml up --abort-on-container-exit
 
 
 ## 📖 API Documentation
@@ -42,13 +45,20 @@ FastAPI automatically generates API documentation that you can access in your br
 
 ## 📜 Dependencies
 
-- 📡 **[requests](https://github.com/psf/requests)** - Simplifies making HTTP requests, great for API calls.
+- 📡 **[httpx](https://github.com/encode/httpx)** - Simplifies making HTTP requests, great for API calls.
 - ⚡ **[fastapi](https://github.com/fastapi/fastapi)** - High-performance web framework for building modern APIs.
 - 🦄 **[uvicorn](https://github.com/encode/uvicorn)** - ASGI server for running FastAPI applications with high concurrency.
 - 🐱‍👤 **[jinja2](https://github.com/pallets/jinja)** - A powerful templating engine for rendering dynamic HTML.
 - 🎲 **[redis](https://github.com/redis/redis)** - In-memory data store for caching, message brokering, and fast lookups.
 - ⛰️ **[alpine.js](https://github.com/alpinejs/alpine)** - Lightweight JavaScript framework for adding interactivity.
 - 🌐 **[htmx](https://github.com/bigskysoftware/htmx)** - Enhances HTML with AJAX, WebSockets, and modern dynamic capabilities.
+- 🎨 **[Tailwind CSS](https://github.com/tailwindlabs/tailwindcss)** - A utility-first CSS framework for building modern, responsive designs efficiently.
 - 📦 **[uv](https://github.com/astral-sh/uvt)** - Modern Python packaging tool written in Rust for blazingly fast performance
 - 🐳 **[Docker](https://github.com/docker/docker-ce)** - Containerization platform for building, shipping, and running applications.
 - 🏗️ **[Docker Compose](https://github.com/docker/compose)** - Tool for defining and running multi-container Docker applications.
+
+## 📋 Dev Dependencies
+
+- 🧪 **[pytest](https://github.com/pytest-dev/pytest)** - Testing framework for writing simple and scalable tests.  
+- 🛰️ **[respx](https://github.com/lundberg/respx)** - Mocking library for HTTPX requests in tests.  
+- 🔀 **[pytest-asyncio](https://github.com/pytest-dev/pytest-asyncio)** - Adds asyncio support for pytest.  

@@ -1,0 +1,7 @@
+services:
+  test-runner:
+    build:
+      context: .
+      dockerfile: Dockerfile.test  # Uses the test-specific Dockerfile
+    working_dir: /app
+
