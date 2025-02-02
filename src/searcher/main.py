@@ -2,7 +2,7 @@ import logging
 import json
 import ast
 import uuid
-import time
+import asyncio
 from searcher.search import google_search
 
 from fastapi import FastAPI, Query, Response, HTTPException, Request, Depends
@@ -10,7 +10,7 @@ from fastapi.responses import FileResponse, HTMLResponse
 from fastapi.staticfiles import StaticFiles
 from fastapi.templating import Jinja2Templates
 
-import redis
+import redis.asyncio as redis
 
 logging.basicConfig(level=logging.INFO)
 logger = logging.getLogger(__name__)
@@ -65,7 +65,7 @@ async def add_session_cookie(request: Request, call_next):
 
 
 @app.get("/", tags=["Search"])
-def serve_frontend() -> FileResponse:
+async def serve_frontend() -> FileResponse:
     """
     Serves the static homepage.
 
@@ -76,7 +76,7 @@ def serve_frontend() -> FileResponse:
 
 
 @app.get("/search", response_class=HTMLResponse, tags=["Search"])
-def search(
+async def search(
     request: Request,
     response: Response,
     query: str = Query(..., min_length=1),
@@ -98,8 +98,8 @@ def search(
     # new_results = google_search(query)
     new_results = EXAMPLE_DATA  # For now, we always return the example data. to not hit 100 requests limit
 
-    time.sleep(3)  # To test the loading indicator
-    redis_client.setex(session_id, SESSION_TTL, json.dumps(new_results))
+    await asyncio.sleep(3)  # To test the loading indicator
+    await redis_client.setex(session_id, SESSION_TTL, json.dumps(new_results))
 
     return templates.TemplateResponse(
         "results.html", {"request": request, "search_items": new_results}
@@ -107,7 +107,7 @@ def search(
 
 
 @app.get("/download", tags=["Download"])
-def download_json(
+async def download_json(
     request: Request, response: Response, session_id: str = Depends(get_session_id)
 ) -> Response:
     """
@@ -125,7 +125,8 @@ def download_json(
         HTTPException: If no search results are found for the session.
     """
     logger.info(f"session ID for download: {session_id}")
-    if data := redis_client.get(session_id):
+
+    if data := await redis_client.get(session_id):
         search_items = json.loads(data)
     else:
         search_items = []

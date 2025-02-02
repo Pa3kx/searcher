@@ -1,4 +1,4 @@
-import requests
+import httpx
 import logging
 import os
 
@@ -7,7 +7,8 @@ logger = logging.getLogger(__name__)
 API_KEY = os.getenv("GOOGLE_API_KEY")
 CSE_ID = os.getenv("GOOGLE_CSE_ID")
 
-def google_search(query: str) -> list[dict[str, str]]:
+
+async def google_search(query: str) -> list[dict[str, str]]:
     """Searches Google and extracts essential information.
 
     Args:
@@ -18,16 +19,16 @@ def google_search(query: str) -> list[dict[str, str]]:
     """
     logger.info(f"Searching for: {query}")
     try:
-        response = requests.get(
-            "https://www.googleapis.com/customsearch/v1",
-            params = {"q": query, "key": API_KEY, "cx": CSE_ID, "num": 10},
-        )
+        async with httpx.AsyncClient() as client:
+            response = await client.get(
+                "https://www.googleapis.com/customsearch/v1",
+                params={"q": query, "key": API_KEY, "cx": CSE_ID, "num": 10},
+            )
         logger.debug(f"Google Search API status code: {response.status_code}")
 
         if response.status_code == 200:
             items = response.json().get("items", [])
             logger.debug(f"Number of results: {len(items)}")
-
             return [
                 {
                     "title": item.get("title", ""),
@@ -36,11 +37,9 @@ def google_search(query: str) -> list[dict[str, str]]:
                 }
                 for item in items
             ]
-
         else:
             logger.error(f"Google API error: {response.text}")
             return []
-
     except Exception:
         logger.exception("Exception calling Google Search API")
         return []
